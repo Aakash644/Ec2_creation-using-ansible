@@ -1,0 +1,21 @@
+---
+# tasks file for ec2_creation
+- name: Create EC2 instances
+  amazon.aws.ec2_instance:
+    name: "{{ item.name }}"
+    key_name: "accesskey"
+    vpc_subnet_id: subnet-05f9bd67e23f77a21
+    instance_type: t2.micro
+    security_group: default
+    region: us-east-1
+    aws_access_key: "{{ec2_access_key}}"  # From vault as defined
+    aws_secret_key: "{{ec2_secret_key}}"  # From vault as defined      
+    network:
+      assign_public_ip: true
+    image_id: "{{ item.image }}"
+    tags:
+      environment: "{{ item.name }}"
+  loop:
+    - { image: "ami-04a81a99f5ec58529", name: "manage-node-1" } # Update AMI ID according 
+    - { image: "ami-04a81a99f5ec58529", name: "manage-node-2" } # to your account
+    - { image: "ami-06c68f701d8090592", name: "manage-node-3" }
