@@ -15,7 +15,7 @@ Before using this role, ensure the following prerequisites are met:
 Clone this repository to your Ansible project or include it as a submodule:
 
 ```bash
-git clone https://github.com/your-username/ansible-ec2-creation-role.git roles/ec2_creation
+git clone https://github.com/your-username/Ec2_creation-using-ansible.git
 ```
 
 ## Setup Vault 
